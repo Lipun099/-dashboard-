@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Faculty</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563EB;
+            --secondary: #22D3EE;
+            --background: #F9FAFB;
+            --section-bg: #FFFFFF;
+            --text: #1E293B;
+            --button-hover: #4338CA;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --primary: #3B82F6;
+            --secondary: #22D3EE;
+            --background: #1E293B;
+            --section-bg: #334155;
+            --text: #F8FAFC;
+            --button-hover: #60A5FA;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .faculty-card {
+            background: var(--section-bg);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            color: var(--text);
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .faculty-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .faculty-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            margin: 0 auto 20px;
+            display: block;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .faculty-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+
+        .faculty-title {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .faculty-department {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+        }
+
+        .faculty-bio {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: var(--button-hover);
+            transform: scale(1.1);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .theme-toggle:hover {
+            background: var(--button-hover);
+        }
+
+        .theme-toggle i {
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .faculty-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+                margin-top: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+        <span>Dark Mode</span>
+    </button>
+
+    <div class="container">
+        <h1 data-aos="fade-down">Our Distinguished Faculty</h1>
+        
+        <div class="faculty-grid">
+            <!-- Faculty Card 1 -->
+            <div class="faculty-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Dr. Sarah Johnson" class="faculty-img">
+                <h2 class="faculty-name">Dr. Sarah Johnson</h2>
+                <p class="faculty-title">Professor of Computer Science</p>
+                <span class="faculty-department">Computer Science</span>
+                <p class="faculty-bio">Specializes in artificial intelligence and machine learning with over 15 years of research experience.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            
+            <!-- Faculty Card 2 -->
+            <div class="faculty-card" data-aos="fade-up" data-aos-delay="150">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Dr. Michael Chen" class="faculty-img">
+                <h2 class="faculty-name">Dr. Michael Chen</h2>
+                <p class="faculty-title">Associate Professor of Biology</p>
+                <span class="faculty-department">Biological Sciences</span>
+                <p class="faculty-bio">Research focuses on marine ecosystems and conservation biology. Leads annual field research expeditions.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            
+            <!-- Faculty Card 3 -->
+            <div class="faculty-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Dr. Angela Martinez" class="faculty-img">
+                <h2 class="faculty-name">Dr. Angela Martinez</h2>
+                <p class="faculty-title">Professor of Economics</p>
+                <span class="faculty-department">Economics</span>
+                <p class="faculty-bio">Expert in behavioral economics and public policy. Published author and frequent media contributor.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            
+            <!-- Faculty Card 4 -->
+            <div class="faculty-card" data-aos="fade-up" data-aos-delay="250">
+                <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Dr. Robert Williams" class="faculty-img">
+                <h2 class="faculty-name">Dr. Robert Williams</h2>
+                <p class="faculty-title">Dean of Engineering</p>
+                <span class="faculty-department">Engineering</span>
+                <p class="faculty-bio">Pioneer in renewable energy systems with multiple patents in solar technology.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            
+            <!-- Faculty Card 5 -->
+            <div class="faculty-card" data-aos="fade-up" data-aos-delay="300">
+                <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="Dr. Emily Park" class="faculty-img">
+                <h2 class="faculty-name">Dr. Emily Park</h2>
+                <p class="faculty-title">Assistant Professor of Psychology</p>
+                <span class="faculty-department">Psychology</span>
+                <p class="faculty-bio">Researches cognitive development in children and adolescent mental health.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            
+            <!-- Faculty Card 6 -->
+            <div class="faculty-card" data-aos="fade-up" data-aos-delay="350">
+                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Dr. David Kim" class="faculty-img">
+                <h2 class="faculty-name">Dr. David Kim</h2>
+                <p class="faculty-title">Professor of Mathematics</p>
+                <span class="faculty-department">Mathematics</span>
+                <p class="faculty-bio">Specializes in applied mathematics and mathematical modeling for biological systems.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            
+            <!-- Faculty Card 7 -->
+            <div class="faculty-card" data-aos="fade-up" data-aos-delay="400">
+                <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Dr. Jennifer Lee" class="faculty-img">
+                <h2 class="faculty-name">Dr. Jennifer Lee</h2>
+                <p class="faculty-title">Associate Professor of Chemistry</p>
+                <span class="faculty-department">Chemistry</span>
+                <p class="faculty-bio">Leads research in nanotechnology and materials science with applications in medicine.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            
+            <!-- Faculty Card 8 -->
+            <div class="faculty-card" data-aos="fade-up" data-aos-delay="450">
+                <img src="https://randomuser.me/api/portraits/men/68.jpg" alt="Dr. James Wilson" class="faculty-img">
+                <h2 class="faculty-name">Dr. James Wilson</h2>
+                <p class="faculty-title">Professor of History</p>
+                <span class="faculty-department">History</span>
+                <p class="faculty-bio">Expert in 20th century European history and author of several acclaimed historical works.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            
+            <!-- Faculty Card 9 -->
+            <div class="faculty-card" data-aos="fade-up" data-aos-delay="500">
+                <img src="https://randomuser.me/api/portraits/women/51.jpg" alt="Dr. Patricia Brown" class="faculty-img">
+                <h2 class="faculty-name">Dr. Patricia Brown</h2>
+                <p class="faculty-title">Professor of Literature</p>
+                <span class="faculty-department">English</span>
+                <p class="faculty-bio">Specializes in post-colonial literature and critical theory. Award-winning author and editor.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            
+            <!-- Faculty Card 10 -->
+            <div class="faculty-card" data-aos="fade-up" data-aos-delay="550">
+                <img src="https://randomuser.me/api/portraits/men/29.jpg" alt="Dr. Thomas Anderson" class="faculty-img">
+                <h2 class="faculty-name">Dr. Thomas Anderson</h2>
+                <p class="faculty-title">Professor of Physics</p>
+                <span class="faculty-department">Physics</span>
+                <p class="faculty-bio">Researches quantum computing and theoretical physics. Frequent collaborator with national labs.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            
+            <!-- Faculty Card 11 -->
+            <div class="faculty-card" data-aos="fade-up" data-aos-delay="600">
+                <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Dr. Rachel Nguyen" class="faculty-img">
+                <h2 class="faculty-name">Dr. Rachel Nguyen</h2>
+                <p class="faculty-title">Assistant Professor of Sociology</p>
+                <span class="faculty-department">Sociology</span>
+                <p class="faculty-bio">Studies urban sociology and community development with a focus on immigrant communities.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            
+            <!-- Faculty Card 12 -->
+            <div class="faculty-card" data-aos="fade-up" data-aos-delay="650">
+                <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="Dr. Mark Taylor" class="faculty-img">
+                <h2 class="faculty-name">Dr. Mark Taylor</h2>
+                <p class="faculty-title">Professor of Business</p>
+                <span class="faculty-department">Business Administration</span>
+                <p class="faculty-bio">Expert in entrepreneurship and innovation management. Former startup founder and advisor.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Dark mode toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const icon = themeToggle.querySelector('i');
+        const text = themeToggle.querySelector('span');
+        
+        // Check for saved theme preference
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme) {
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            
+            if (currentTheme === 'dark') {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                text.textContent = 'Light Mode';
+            }
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            let theme = 'light';
+            if (document.documentElement.getAttribute('data-theme') !== 'dark') {
+                theme = 'dark';
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                text.textContent = 'Light Mode';
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                text.textContent = 'Dark Mode';
+            }
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+        });
+    </script>
+</body>
+</html>
